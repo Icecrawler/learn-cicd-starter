@@ -39,5 +39,5 @@ jobs:
 
       - name: staticcheck action
         uses: dominikh/staticcheck-action@v1
-          with:
-            version: "latest"
+        with:
+          version: "latest"
