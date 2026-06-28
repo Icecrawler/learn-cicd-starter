@@ -18,3 +18,23 @@ jobs:
 
       - name: Build
         run: ./scripts/buildprod.sh
+
+    # Add "id-token" with the intended permissions.
+      permissions:
+        contents: 'read'
+        id-token: 'write'
+
+
+      - id: 'auth'
+        uses: 'google-github-actions/auth@v2'
+        with:
+          credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
+
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v3'
+
+      - name: 'Use gcloud CLI'
+        run: 'gcloud info'
+
+      - name: gcloud build
+        run: "gcloud builds submit --tag us-central1-docker.pkg.dev/notely-500814/notely-ar-repo/notely:latest ."
