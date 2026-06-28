@@ -17,8 +17,6 @@ jobs:
 
       - uses: mscno/setup-goose@v1
 
-      - run: goose up
-
       - name: Set up Go
         uses: actions/setup-go@v5
         with:
