@@ -8,6 +8,10 @@ jobs:
   Deploy:
     runs-on: ubuntu-latest
     steps:
+      permissions:
+        contents: 'read'
+        id-token: 'write'
+
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -18,12 +22,6 @@ jobs:
 
       - name: Build
         run: ./scripts/buildprod.sh
-
-    # Add "id-token" with the intended permissions.
-      permissions:
-        contents: 'read'
-        id-token: 'write'
-
 
       - id: 'auth'
         uses: 'google-github-actions/auth@v2'
